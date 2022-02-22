@@ -16,7 +16,6 @@ namespace hcf;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 
-use pocketmine\entity\EntityDataHelper;
 use pocketmine\entity\EntityFactory;
 
 use libs\invmenu\InvMenuHandler;
@@ -32,6 +31,8 @@ use hcf\provider\{
 use hcf\Utils\Utils;
 
 use hcf\discord\Logger;
+
+use hcf\fight\FightRegister;
 
 class Loader extends PluginBase {
    
@@ -67,6 +68,7 @@ class Loader extends PluginBase {
      YAMLProvider::init();
      $this->discord = new Logger($this->getConfig()->get("webhook-url")/*, $this->getConfig()->get("webhook-check")*/);
      (new EventListener())->init();
+     (new FightRegister());
      $this->getLogger()->info("=========================================="); 
      $this->getLogger()->notice("
  **      **   ******  ********         ******    *******   *******   ********
@@ -82,11 +84,6 @@ class Loader extends PluginBase {
      $author = implode(",", $this->getDescription()->getAuthors());
      $this->getLogger()->notice("Authors: §b{$author}");
      $this->getLogger()->info("==========================================");
-    
-   /* $entityFactory = EntityFactory::getInstance();
-		$entityFactory->register(FakeVillager::class, function(World $world, CompoundTag $nbt) : LogoutVillager {
-			return new LogoutVillager(EntityDataHelper::parseLocation($nbt, $world), $nbt);
-		}, ["FakeVillager"]);*/
    }
    
    public static function getInstance(): Loader
