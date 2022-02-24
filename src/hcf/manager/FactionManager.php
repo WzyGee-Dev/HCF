@@ -46,7 +46,7 @@ class FactionManager
     $this->factions[$name] = new Faction($name, null, [$username], 0, self::DTR_MAX);
     $owner->setFaction($this->factions[$name]);
     /** @funciton Set the player role for the faction **/
-    $owner->setFactionRole(self::OWNER);
+    $owner->setFactionRank(self::OWNER);
   }
   
   public function deleteFaction(string $name): void
@@ -57,7 +57,7 @@ class FactionManager
     $faction = $this->factions[$name];
     foreach($faction->getMembers() as $player) {
       $player->setFaction(null);
-      $player->setFactionRole(null);
+      $player->setFactionRank(null);
     }
     // code.. SQLite3
     unset($faction);

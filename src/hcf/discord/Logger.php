@@ -61,8 +61,8 @@ class Logger
   
   public function sendMessage(string $username, string $avtarUrl = null, string $description): void
   {
-    if ($this->webhook->isValid()) {
     $message = new Message();
+    if ($this->webhook->isValid()) {
     $message->setUsername($username);
     if (isset($avatarUrl)) {
       $message->setAvatarURL($avatarUrl);

@@ -8,15 +8,19 @@ use hcf\translation\Translation;
 
 class Faction 
 {
-  
+  /** @var String **/
   public $name;
   
+  /** @var Position **/
   public $home;
   
+  /** @var Player::getName()[] **/
   public $members;
   
+  /** @var Int **/
   public $balance;
   
+  /** @var Float **/
   public $dtr;
   
   public function __construct(string $name, Position $home, array $members, int $balance, float $dtr)
@@ -53,4 +57,19 @@ class Faction
     return $this->dtr;
   }
  
+  public function setHome(Position $position): void
+  {
+    $this->home = $position;
+  }
+  
+  public function setBalance(int $money): void
+  {
+    $this->balance = $money;
+  }
+  
+  public function setDTR(float $dtr): void
+  {
+    $this->dtr = $dtr;
+  }
+  
 }

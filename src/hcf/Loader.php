@@ -60,7 +60,7 @@ class Loader extends PluginBase {
       InvMenuHandler::register($this);
      }
      $this->saveDefaultConfig();
-     $this->getServer()->getNetwork()->setName(str_replace("&", "§", $this->getConfig()->get("server-name")) . "§r | " . $this->getConfig()->get("server-color") . $this->getConfig()->get("server-description"));
+     $this->getServer()->getNetwork()->setName(TextFormat::colorize(($this->getConfig()->get("server-name")) . "&r | " . $this->getConfig()->get("server-color") . $this->getConfig()->get("server-description")));
      /*
      MySQLProvider::connect();
      */
