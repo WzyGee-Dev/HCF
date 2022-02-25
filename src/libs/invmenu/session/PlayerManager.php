@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace libs\invmenu\session;
 
 use libs\invmenu\session\network\handler\PlayerNetworkHandlerRegistry;
-use muqsit\invmenu\session\network\PlayerNetwork;
+use libs\invmenu\session\network\PlayerNetwork;
 use pocketmine\event\EventPriority;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerQuitEvent;

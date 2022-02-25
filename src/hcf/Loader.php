@@ -37,7 +37,7 @@ use hcf\fight\FightRegister;
 
 class Loader extends PluginBase {
    
-   public const PLUGIN_VERSION = "1.5.0";
+   public const PLUGIN_VERSION = "1.5.8";
    
    public static Loader $instance;
    
