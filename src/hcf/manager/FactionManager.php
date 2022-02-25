@@ -3,6 +3,7 @@
 namespace hcf\manager;
 
 use pocketmine\utils\SingletonTrait;
+use pocketmine\Server;
 
 use hcf\Loader;
 use hcf\PlayerHCF;
@@ -27,7 +28,10 @@ class FactionManager
   
   public function isFaction(string $name): bool
   {
-    return (isset($this->factions[$name])) ? true : false;
+    $sqlite = new SQLite3Provider();
+    $query = $sqlite->getDatabase()->query("SELECT factionName FROM players WHERE username = '$name'");
+    $result = $query->fetchArray(SQLITE3_ASSOC);
+    return $result ? true : false;
   }
   
   public function getFaction(string $name): Faction
@@ -47,6 +51,26 @@ class FactionManager
     $owner->setFaction($this->factions[$name]);
     /** @funciton Set the player role for the faction **/
     $owner->setFactionRank(self::OWNER);
+  }
+  
+  public function joinFaction(Player $owner, string $username, string $factionName): void
+  {
+    if ($this->isFaction($username)) {
+      return;
+    }
+    $sql = new SQLite3Provider();
+    $query = $sql->prepare("INSERT INTO players(username, factionName, factionRank) VALUES (:username, :factionName, :factionRank);");
+    $query->bindParam(":username", $username, SQLITE3_TEXT);
+    $query->bindParam(":factionName", $factionName, SQLITE3_TEXT);
+    $query->bindParam(":factionRank", self::MEMBER, SQLITE3_TEXT);
+    $query->execute();
+    $player->sendMessage();
+    foreach($player->getFaction()->getMembers() as $member) {
+      $memberPrefix = Loader::getInstance()->getServer()->getPlayerByPrefix($member);
+      if ($memberPrefix instanceof PlayerHCF) {
+        $memberPrefix->sendMessage();
+      }
+    } 
   }
   
   public function deleteFaction(string $name): void

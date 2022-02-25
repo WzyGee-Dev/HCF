@@ -9,17 +9,18 @@ use pocketmine\player\Player;
 use pocketmine\utils\TextFormat as TE;
 
 use hcf\Loader;
-use hcf\faction\Faction;
+use hcf\manager\FactionManager;
+
 class LFFCommand extends Command{
 
     public function __construct()
     {
-        parent::__construct("lff", Loader::getInstance());
+        parent::__construct("lff");
         $this->setDescription("Send the message: Looking for Faction.");   
     }
 
     public function execute(CommandSender $sender, String $label, Array $args) : void {
-        if(Faction::inFaction($sender->getName())){
+        if(FactionManager::getInstance()->isFaction($sender->getName())) {
             $sender->sendMessage(TE::RED . "You cannot run this command if you are already in a faction.");
             return;
         }
