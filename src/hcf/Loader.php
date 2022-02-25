@@ -18,7 +18,6 @@ use pocketmine\utils\{
   Config,
   TextFormat
 };
-use pocketmine\entity\EntityFactory;
 
 use libs\invmenu\InvMenuHandler;
  
