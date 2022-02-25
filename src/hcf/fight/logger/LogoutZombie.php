@@ -59,7 +59,7 @@ class LogoutZombie extends Zombie
     }
     if ($this->timeLeft === 0) {
       $this->close();
-      return;
+      return false;
     }
     if ($this->player === null & $this->name === null) {
       $this->close();
