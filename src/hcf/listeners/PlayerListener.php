@@ -26,10 +26,10 @@ class PlayerListener implements Listener
   public function joinEvent(PlayerJoinEvent $event): void
   {
     $player = $event->getPlayer();
-    
+    if (!$player instanceof PlayerHCF) return;
     //$event->setJoinMessage(TE::GRAY."[".TE::GREEN."+".TE::GRAY."] ".TE::GREEN.$player->getName().TE::GRAY." entered the server.");
     $scoreboard = Scoreboard::create($player, TextFormat::colorize(Loader::getInstance()->getConfig()->get("server-name") . "&r | " . Loader::getInstance()->getConfig()->get("server-color") . "Map: #" . Loader::getInstance()->getConfig()->get("server-map")));
-    Loader::getInstance()->getScheduler()->scheduleRepeatingTask(new ScoreboardTask($scoreboard), 30);
+    //Loader::getInstance()->getScheduler()->scheduleRepeatingTask(new ScoreboardTask($scoreboard), 30);
  }
   
   public function quitEvent(PlayerQuitEvent $event): void
