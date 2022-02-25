@@ -15,7 +15,8 @@ use pocketmine\Server;
 
 use hcf\{
   PlayerHCF,
-  Loader
+  Loader,
+  translation\Translation
 };
 
 use libs\scoreboard\Scoreboard;
@@ -27,7 +28,7 @@ class PlayerListener implements Listener
   {
     $player = $event->getPlayer();
     if (!$player instanceof PlayerHCF) return;
-    //$event->setJoinMessage(TE::GRAY."[".TE::GREEN."+".TE::GRAY."] ".TE::GREEN.$player->getName().TE::GRAY." entered the server.");
+    $event->setJoinMessage(TextFormat::colorize(Translation::addMessage("message-welcome", ["name" => $player->getName()])));
     $scoreboard = Scoreboard::create($player, TextFormat::colorize(Loader::getInstance()->getConfig()->get("server-name") . "&r | " . Loader::getInstance()->getConfig()->get("server-color") . "Map: #" . Loader::getInstance()->getConfig()->get("server-map")));
     //Loader::getInstance()->getScheduler()->scheduleRepeatingTask(new ScoreboardTask($scoreboard), 30);
  }
@@ -36,7 +37,7 @@ class PlayerListener implements Listener
   {
     $player = $event->getPlayer();
     
-    //$event->setQuitMessage(TE::GRAY."[".TE::RED."-".TE::GRAY."]".TE::RED.$player->getName().TE::GRAY." left the server.");
+    $event->setQuitMessage(TextFormat::colorize(Translation::addMessage("message-leave", ["name" => $player->getName()])));
   }
   
   public function creation(PlayerCreationEvent $event): void 
