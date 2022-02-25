@@ -12,7 +12,7 @@ class PlayerHCF extends Player
   
   private $goldenApple = 0;
   
-  private Faction $faction;
+  private ?Faction $faction;
   
   private string $factionRank;
   
@@ -20,7 +20,7 @@ class PlayerHCF extends Player
   
   private string $factionInviteName;
   
-  private PlayerHCF $factionInviteOwner;
+  private string $factionInviteOwner;
   
   public function setFaction(Faction $faction): void
   {
