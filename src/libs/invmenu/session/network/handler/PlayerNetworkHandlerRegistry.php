@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace libs\invmenu\session\network\handler;
 
 use Closure;
+use libs\invmenu\session\network\handler\ClosurePlayerNetworkHandler;
 use libs\invmenu\session\network\NetworkStackLatencyEntry;
 use pocketmine\network\mcpe\protocol\types\DeviceOS;
 
