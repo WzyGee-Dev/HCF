@@ -14,7 +14,7 @@ class FightRegister
   public function __construct()
   {
     $factory = EntityFactory::getInstance();
-    $factory->register(LogoutZombie::class, function(World $world, CompoundTag $tag) {
+    $factory->register(LogoutZombie::class, function(World $world, CompoundTag $tag): LogoutZombie {
       return new LogoutZombie(EntityDataHelper::parseLocation($tag, $world), $tag);
     }, ["Zombie", "minecraft:zombie"]);
   }
