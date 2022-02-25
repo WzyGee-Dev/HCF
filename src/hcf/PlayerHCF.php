@@ -16,6 +16,12 @@ class PlayerHCF extends Player
   
   private string $factionRank;
   
+  private bool $factionInvite;
+  
+  private string $factionInviteName;
+  
+  private PlayerHCF $factionInviteOwner;
+  
   public function setFaction(Faction $faction): void
   {
     $this->faction = $faction;
@@ -32,6 +38,22 @@ class PlayerHCF extends Player
     $sql->bindParam(":username", $this->getName());
     $sql->bindParam(":factionRank", $rank);
     $sql->execute();
+  }
+  
+  public function setInviteFaction(bool $invite): void
+  {
+    $this->factionInvite = $invite;
+  }
+  
+  /** @note Invitation faction name **/
+  public function setFactionName(string $factionName): void
+  {
+    $this->factionInviteName = $factionName;
+  }
+  
+  public function setFactionOwner(string $factionOwner): void
+  {
+    $this->factionInviteOwner = $factionOwner;
   }
   
   public function getFaction(): Faction

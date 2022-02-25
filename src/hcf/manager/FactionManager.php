@@ -64,11 +64,11 @@ class FactionManager
     $query->bindParam(":factionName", $factionName, SQLITE3_TEXT);
     $query->bindParam(":factionRank", self::MEMBER, SQLITE3_TEXT);
     $query->execute();
-    $player->sendMessage();
-    foreach($player->getFaction()->getMembers() as $member) {
-      $memberPrefix = Loader::getInstance()->getServer()->getPlayerByPrefix($member);
-      if ($memberPrefix instanceof PlayerHCF) {
-        $memberPrefix->sendMessage();
+    $owner->sendMessage();
+    foreach($owner->getFaction()->getMembers() as $member) {
+      $player = Loader::getInstance()->getServer()->getPlayerByPrefix($member);
+      if ($player instanceof PlayerHCF) {
+        $player->sendMessage();
       }
     } 
   }
