@@ -32,7 +32,7 @@ class LogoutZombie extends Zombie
   
   public array $armorItems;
   
-  public function __construct(Location $location, ?CompoundTag $nbt = null, PlayerHCF $player, int $time)
+  public function __construct(Location $location, ?CompoundTag $nbt = null, PlayerHCF $player = null, int $time = 0)
   {
     parent::__construct($location, $nbt);
     $this->player = $player;
@@ -55,7 +55,7 @@ class LogoutZombie extends Zombie
   {
     if (count(Loader::getInstance()->getServer()->getOnlinePlayers()) === 0) {
       $this->close();
-      return;
+      return false;
     }
     if ($this->timeLeft === 0) {
       $this->close();
@@ -63,11 +63,11 @@ class LogoutZombie extends Zombie
     }
     if ($this->player === null & $this->name === null) {
       $this->close();
-      return;
+      return false;
     }
     if ($this->player !== Loader::getInstance()->getServer()->getPlayerByPrefix($this->name) & $this->name !== $this->player->getName()) {
       $this->close();
-      return;
+      return false;
     }
     $this->timeLeft--;
     $this->setNameTag(
