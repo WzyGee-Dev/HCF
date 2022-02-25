@@ -27,6 +27,10 @@ leaveFaction: "%name% se ha ido de la faction"
 maxAlliesFaction: "La %faction_name% alcanzo el maximo de alianzas de una faction."
 depositFaction: "Has depositado $%amount% en la faction %faction_name%"
 
+# SERVER
+message-welcome: ""
+message-leave: ""
+
 # OTHER  
 broadcastMessage: "%broadcast%"
 foundDiamond: "%name% encontro %amount% de Diamantes."

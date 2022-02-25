@@ -60,7 +60,7 @@ class Translation
 
       foreach($args as $arg => $value) {
 
-      $message = str_replace("{$argument}", $value, $config->get($character)); 
+      $message = str_replace("%$argument%", $value, $config->get($character)); 
 
         }
 
@@ -126,7 +126,7 @@ class Translation
 
     foreach ($args as $argument => $value) {
 
-      $message = str_replace("{$argument}", $value, $config->get($character));
+      $message = str_replace("%$argument%", $value, $config->get($character));
 
       }
 
