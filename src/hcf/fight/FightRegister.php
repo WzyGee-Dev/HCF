@@ -3,6 +3,8 @@
 namespace hcf\fight;
 
 use pocketmine\entity\{EntityDataHelper,EntityFactory};
+use pocketmine\world\World;
+use pocketmine\nbt\tag\CompoundTag;
 
 use hcf\fight\logger\LogoutZombie;
 

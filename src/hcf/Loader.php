@@ -18,8 +18,6 @@ use pocketmine\utils\{
   Config,
   TextFormat
 };
-use pocketmine\world\World;
-use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\entity\EntityFactory;
 
 use libs\invmenu\InvMenuHandler;
