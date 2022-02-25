@@ -8,9 +8,11 @@ class PlayerHCF extends Player
 {
   public const PUBLIC_CHAT = "public"; public const STAFF_CHAT = "staff_chat"; public const FACTION_CHAT = "faction_chat"; 
 
-  private $enderPearl = 0 ;
+  private bool $enderPearl = false;
   
-  private $goldenApple = 0;
+  private int $enderPearlTime = 0;
+  
+  //private $goldenApple = false;
   
   private ?Faction $faction;
   
@@ -21,6 +23,27 @@ class PlayerHCF extends Player
   private string $factionInviteName;
   
   private string $factionInviteOwner;
+  
+  public function getEnderPearl(): bool
+  {
+    return $this->enderPearl;
+  }
+  
+  /*
+  public function getGoldenApple(): bool
+  {
+    return $this->goldenApple;
+  }*/
+  
+  public function setEnderPearlTime(int $time): void
+  {
+    return $this->enderPearlTime = $time;
+  }
+  
+  /*public function setGoldebAppleTime(int $time): void
+  {
+    $this->goldenAppleTime = $time;
+  }*/
   
   public function setFaction(Faction $faction): void
   {
