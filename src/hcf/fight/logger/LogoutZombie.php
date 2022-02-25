@@ -32,7 +32,7 @@ class LogoutZombie extends Zombie
   
   public array $armorItems;
   
-  public function __construct(Location $location, ?CompoundTag $nbt= null, PlayerHCF $player, int $time)
+  public function __construct(Location $location, ?CompoundTag $nbt = null, PlayerHCF $player, int $time)
   {
     parent::__construct($location, $nbt);
     $this->player = $player;
