@@ -51,9 +51,8 @@ class LogoutZombie extends Zombie
     $this->setMaxHealth(100);
   }
   
-  public function onUpdate(int $currentTick): void
+  public function onUpdate(int $currentTick): bool
   {
-    parent::onUpdate($currentTick);
     if (count(Loader::getInstance()->getServer()->getOnlinePlayers()) === 0) {
       $this->close();
       return;
@@ -77,6 +76,7 @@ class LogoutZombie extends Zombie
     $this->setScoreTag(
       Translation::addMessage("fight-logger-logout-time", ["&" => "§", "time" => $this->timeLeft])
     );
+    return parent::onUpdate($currentTick);
   }
   
   public function getDrops(): array
