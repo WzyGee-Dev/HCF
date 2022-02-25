@@ -14,7 +14,10 @@
 namespace hcf;
 
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\Config;
+use pocketmine\utils\{
+  Config,
+  TextFormat
+};
 
 use pocketmine\entity\EntityFactory;
 
