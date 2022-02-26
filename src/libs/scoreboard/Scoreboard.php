@@ -101,6 +101,11 @@ class Scoreboard
     $this->getPlayer()->getNetworkSession()->sendDataPacket($pk);
   }
   
+ /* public function setAllLine(array $lines): void
+  {
+    
+  }*/
+  
   public function removeLine(int $id): void
   {
     $line = $this->lines[$id];
