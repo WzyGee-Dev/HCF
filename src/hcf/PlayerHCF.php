@@ -89,4 +89,19 @@ class PlayerHCF extends Player
     return $this->factionRank;
   }
   
+  public function wasFactionInvite(): bool
+  {
+    return $this->factionInvite;
+  }
+  
+  public function getFactionName(): string
+  {
+    return $this->factionInviteName;
+  }
+
+  public function getFactionOwner(): string
+  {
+    return $this->factionInviteOwner;
+  }
+  
 }
