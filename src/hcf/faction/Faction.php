@@ -62,6 +62,11 @@ class Faction
     $this->home = $position;
   }
   
+  public function setMembers(string $username): void
+  {
+    $this->members[] = $username;
+  }
+  
   public function setBalance(int $money): void
   {
     $this->balance = $money;

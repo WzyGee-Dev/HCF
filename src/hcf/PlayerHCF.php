@@ -48,7 +48,7 @@ class PlayerHCF extends Player
   public function setFaction(Faction $faction): void
   {
     $this->faction = $faction;
-    $sql = SQLite3Provider::getDatabase()->prepare("INSERT INTO players(username, factionName) VALUES (:username, :factionName);");
+    $sql = (new SQLite3Provider())->getDatabase()->prepare("INSERT INTO players(username, factionName) VALUES (:username, :factionName);");
     $sql->bindParam(":username", $this->getName());
     $sql->bindParam(":factionName", $faction->getName());
     $sql->execute();
@@ -57,7 +57,7 @@ class PlayerHCF extends Player
   public function setFactionRank(string $rank): void
   {
     $this->factionRank = $rank;
-    $sql = SQLite3Provider::getDatabase()->prepare("UPDATE players SET factionRank = :factionRank WHERE username = :username;");
+    $sql = (new SQLite3Provider())->getDatabase()->prepare("UPDATE players SET factionRank = :factionRank WHERE username = :username;");
     $sql->bindParam(":username", $this->getName());
     $sql->bindParam(":factionRank", $rank);
     $sql->execute();

@@ -22,18 +22,15 @@ use pocketmine\utils\{
 use libs\invmenu\InvMenuHandler;
  
 use hcf\EventListener;
- 
 use hcf\provider\{
   MySQLProvider,
   SQLite3Provider,
   YAMLProvider
 };
-
 use hcf\Utils\Utils;
-
 use hcf\discord\Logger;
-
 use hcf\fight\FightRegister;
+use hcf\manager\CommandsManager;
 
 class Loader extends PluginBase {
    
@@ -70,6 +67,7 @@ class Loader extends PluginBase {
      $this->discord = new Logger($this->getConfig()->get("webhook-url")/*, $this->getConfig()->get("webhook-check")*/);
      (new EventListener())->init();
      (new FightRegister());
+     CommandsManager::init();
      $this->getLogger()->info("=========================================="); 
      $this->getLogger()->notice("
  **      **   ******  ********         ******    *******   *******   ********
