@@ -30,9 +30,9 @@ leave-faction: "%name% has left the faction"
 #maxAlliesFaction: "La %faction_name% alcanzo el maximo de alianzas de una faction."
 deposit-faction: "You have deposited $%amount% in faction %faction_name%"
 invite-player-faction: "You have been invited to the faction: %faction_name%, type /f accept to accept the invitation"
-message-invite-owner-faction: "You have invited %name% correctly, wait for him to accept the invitation"
-acceptInviteFaction: "You accepted the invitation to the faction of %faction_name%, enjoy the team and don't break the rules"
-acceptInviteOwnerFaction: "The player %name% has agreed to join your faction"
+invite-owner-faction: "You have invited %name% correctly, wait for him to accept the invitation"
+accept-invite-faction: "You accepted the invitation to the faction of %faction_name%, enjoy the team and don't break the rules"
+accept-invite-owner-faction: "The player %name% has agreed to join your faction"
 
 # SERVER
 message-welcome: "&7[&a+&7] &a%name% &7entered the server"

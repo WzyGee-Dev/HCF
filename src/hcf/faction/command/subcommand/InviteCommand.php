@@ -47,8 +47,8 @@ class InviteCommand extends Command
     $player->setInviteFaction(true);
     $player->setFactionName($sender->getFaction()->getName());
     $player->setFactionOwner($sender->getName());
-    $player->sendMessage();
-    $sender->sendMessage();
+    $player->sendMessage(Translation::addMessage("invite-player-faction", ["faction_name" => $sender->getFaction()->getName()]));
+    $sender->sendMessage(Translation::addMessage("invite-owner-faction", ["name" => $player->getName()]));
   }
   
 }
