@@ -24,9 +24,9 @@ class FactionCommand extends Command
   {
     parent::__construct("faction", "Faction Commands", "/faction help", ["f", "fac"]);
     $this->addCommand(new CreateCommand());
-    /*$this->addCommand(new InviteCommand());
+    $this->addCommand(new InviteCommand());
     $this->addCommand(new AcceptCommand());
-    $this->addCommand(new TopCommand());*/
+    /*$this->addCommand(new TopCommand());*/
   }
 
   public function execute(CommandSender $sender, string $label, array $args): void

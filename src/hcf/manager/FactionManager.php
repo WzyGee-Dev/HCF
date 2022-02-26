@@ -44,7 +44,7 @@ class FactionManager
     if ($this->isFaction($name)) {
       return;
     }
-    //code.. (SQLite3)
+    //code... (SQLite3)
     $sqlBalance = (new SQLite3Provider())->getDatabase()->prepare("INSERT OR REPLACE INTO balances(factionName, money) VALUES (:factionName, :money);");
     $sqlBalance->bindParam(":factionName", $name, SQLITE3_TEXT);
     $sqlBalance->bindParam(":money", 0, SQLITE3_INTEGER);

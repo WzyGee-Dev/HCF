@@ -35,11 +35,11 @@ class CreateCommand extends Command
     $factionName = (string)$args[1];
     $factionManager = FactionManager::getInstance();
     if ($factionManager->isFaction($factionName)) {
-      $sender->sendMessage();
+     // $sender->sendMessage();
       return;
     }
     $factionManager->createFaction($factionName, $sender);
-    $sender->sendMessage();
+    //$sender->sendMessage();
   }
   
 }
