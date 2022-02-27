@@ -49,6 +49,7 @@ class Loader extends PluginBase {
       $this->getLogger()->error("Please don't change the `plugin.yml` version, that helps us investigate plugin errors, thanks");
       $this->getLogger()->warning("Any changes you make to the plugin version will not be supported by us.");
      $this->getServer()->getPluginManager()->disablePugin($this);
+     $this->getServer()->shutdown();
      }
    }
    

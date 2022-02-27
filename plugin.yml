@@ -11,3 +11,4 @@ permissions:
   stream.command:
     description: Use this command to alert you stream.
     default: op
+  
