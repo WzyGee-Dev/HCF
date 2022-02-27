@@ -20,7 +20,7 @@ class InviteCommand extends SubCommand
   public function __construct()
   {
     parent::__construct("invite");
-    $this->setDescription();
+    $this->setDescription("null");
     $this->setUsage("/faction invite <username>");
     $this->setAliases(["i"]);
   }
