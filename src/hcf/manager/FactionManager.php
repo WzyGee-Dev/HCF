@@ -16,9 +16,6 @@ class FactionManager
   public const OWNER = "owner";
   public const MEMBER = "member";
   
-  private $config = Loader::getInstance()->getConfig("faction");
-  
-  public const DTR_MAX = $this->config["maxPlayers"] + .5;
   public const DTR_REGENERATE_TIME = 3600;
   
   public array $factions; 
@@ -33,7 +30,7 @@ class FactionManager
     $sqlite = new SQLite3Provider();
     $query = $sqlite->getDatabase()->query("SELECT factionName FROM players WHERE username = '$name';");
     $result = $query->fetchArray(SQLITE3_ASSOC);
-    return (isset($result)) ? true : false;
+    return (isset($result["factionName"])) ? true : false;
   }
   
   public function getFaction(string $name): Faction
@@ -47,13 +44,14 @@ class FactionManager
       return;
     }
     //code... (SQLite3)
+    $dtr_max = Loader::getInstance()->getConfig("faction")["maxplayers"] + .5;
     $sqlBalance = (new SQLite3Provider())->getDatabase()->prepare("INSERT OR REPLACE INTO balances(factionName, money) VALUES (:factionName, :money);");
     $sqlBalance->bindParam(":factionName", $name, SQLITE3_TEXT);
     $sqlBalance->bindParam(":money", 0, SQLITE3_INTEGER);
     $sqlBalance->execute();
     $sqlDTR = (new SQLite3Provider())->getDatabase()->prepare("INSERT INTO strength(factionName, dtr) VALUES (:factionName, :dtr);");
     $sqlDTR->bindParam(":factionName", $name, SQLITE3_TEXT);
-    $sqlDTR->bindParam(":dtr", self::DTR_MAX, SQLITE3_FLOAT);
+    $sqlDTR->bindParam(":dtr", $dtr_max, SQLITE3_FLOAT);
     $sqlDTR->execute();
     $sqlTop = (new SQLite3Provider())->getDatabase()->prepare("INSERT INTO tops(factionName, points) VALUES (:factionName, :points);");
     $sqlTop->bindParam(":factionName", $name, SQLITE3_TEXT);
@@ -64,7 +62,7 @@ class FactionManager
     $sqlMembers->bindParam(":members", $owner->getName(), SQLITE3_TEXT);
     $sqlMembers->execute();
     /** @var Faction(factionName, positionHome, membersArray, balanceInt, dtrFloat) **/
-    $this->factions[$name] = new Faction($name, null, [$owner->getName()], 0, self::DTR_MAX);
+    $this->factions[$name] = new Faction($name, null, [$owner->getName()], 0, $dtr_max);
     $owner->setFaction($this->factions[$name]);
     /** @funciton Set the player role for the faction **/
     $owner->setFactionRank(self::OWNER);
