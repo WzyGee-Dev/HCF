@@ -43,9 +43,9 @@ class PlayerListener implements Listener
   public function creation(PlayerCreationEvent $event): void 
   {
     if ($event->getPlayerClass() !== PlayerHCF::class) {
+      $event->setPlayerClass(PlayerHCF::class);
       return;
     }
-    $event->setPlayerClass(PlayerHCF::class);
   }
   
 }

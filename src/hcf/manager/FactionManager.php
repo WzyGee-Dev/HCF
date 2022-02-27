@@ -16,7 +16,9 @@ class FactionManager
   public const OWNER = "owner";
   public const MEMBER = "member";
   
-  public const DTR_MAX = Loader::getInstance()->getConfig("faction")["maxPlayers"] . .5;
+  private $config = Loader::getInstance()->getConfig("faction");
+  
+  public const DTR_MAX = $this->config["maxPlayers"] + .5;
   public const DTR_REGENERATE_TIME = 3600;
   
   public array $factions; 

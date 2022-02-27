@@ -25,7 +25,7 @@ class InviteCommand extends SubCommand
     $this->setAliases(["i"]);
   }
   
-  public function execute(CommandSender $sender, string $label, array $args)
+  public function execute(CommandSender $sender, string $label, array $args): void
   {
     if (!$sender instanceof PlayerHCF) return;
     
