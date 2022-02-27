@@ -29,7 +29,7 @@ class PlayerListener implements Listener
     $player = $event->getPlayer();
     if (!$player instanceof PlayerHCF) return;
     $event->setJoinMessage(TextFormat::colorize(Translation::addMessage("message-welcome", ["name" => $player->getName()])));
-    $scoreboard = Scoreboard::create($player, TextFormat::colorize(Loader::getInstance()->getConfig()->get("server-name") . "&r | " . Loader::getInstance()->getConfig()->get("server-color") . "Map: #" . Loader::getInstance()->getConfig()->get("server-map")));
+    //$scoreboard = Scoreboard::create($player, TextFormat::colorize(Loader::getInstance()->getConfig()->get("server-name") . "&r | " . Loader::getInstance()->getConfig()->get("server-color") . "Map: #" . Loader::getInstance()->getConfig()->get("server-map")));
     //Loader::getInstance()->getScheduler()->scheduleRepeatingTask(new ScoreboardTask($scoreboard), 30);
  }
   
