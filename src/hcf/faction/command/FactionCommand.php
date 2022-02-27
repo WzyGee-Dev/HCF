@@ -14,6 +14,7 @@ use hcf\faction\command\subcommand\{
   AcceptCommand,
   TopCommand
 };
+use hcf\commands\SubCommand;
 
 class FactionCommand extends Command
 {
@@ -37,7 +38,7 @@ class FactionCommand extends Command
     }
   }
   
-  public function addCommand(Command $command): void
+  public function addCommand(SubCommand $command): void
   {
     $this->commands[$command->getName()] = $command;
     foreach($command->getAliases() as $alias) {
