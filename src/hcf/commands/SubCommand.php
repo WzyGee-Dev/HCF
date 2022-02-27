@@ -36,6 +36,11 @@ abstract class SubCommand
     return $this->usageMessage;
   }
   
+  public function getAliases(): array
+  {
+    return $this->aliases;
+  }
+  
   public function setDescription(string $desc): void
   {
     $this->description = $desc;
