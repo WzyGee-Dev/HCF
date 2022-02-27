@@ -33,9 +33,6 @@ class Translation
     private $config = new Config(Loader::getInstance()->getDataFolder() . $this->language . DIRECTORY_SEPARATOR . "messages.yml", Config::YAML);
 
    */ 
-
-    private $config = new Config(Loader::getInstance()->getDataFolder() . "messages.yml", Config::YAML);
-
     
 
     /*
@@ -116,7 +113,7 @@ class Translation
 
     {
 
-    $config = $this->config;
+    $config = new Config(Loader::getInstance()->getDataFolder() . "messages.yml", Config::YAML);
 
     if (!$config->exists($character)) {
 
@@ -144,12 +141,12 @@ class Translation
 
     **/
 
-    public function getConfigMessage(): Config
+    /*public function getConfigMessage(): Config
 
     {
 
     return $this->config;
 
-    }
+    }*/
 
 }

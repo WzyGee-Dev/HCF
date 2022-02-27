@@ -29,7 +29,7 @@ class FactionManager
   public function isFaction(string $name): bool
   {
     $sqlite = new SQLite3Provider();
-    $query = $sqlite->getDatabase()->query("SELECT factionName FROM players WHERE username = '$name'");
+    $query = $sqlite->getDatabase()->query("SELECT factionName FROM players WHERE username = '$name';");
     $result = $query->fetchArray(SQLITE3_ASSOC);
     return (isset($result)) ? true : false;
   }
@@ -103,6 +103,14 @@ class FactionManager
     }
     // code.. SQLite3
     unset($faction);
+  }
+  
+  public function getLeader(string $username): bool
+  {
+    $sql = new SQLite3Provider();
+    $query = $sql->query("SELECT * FROM players WHERE username = '$username;'")->fetchArray(SQLITE3_ASSOC);
+    $player = Server::getInstance()->getPlayerByPrefix($player);
+    return ($player->getFactionRank() === $query["factionRank"]);
   }
   
 }
