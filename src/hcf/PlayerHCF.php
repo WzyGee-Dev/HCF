@@ -48,8 +48,7 @@ class PlayerHCF extends Player
   public function setFaction(Faction $faction): void
   {
     $this->faction = $faction;
-    $sql = (new SQLite3Provider())->getDatabase()->prepare("INSERT INTO players(username, factionName) VALUES (:username, :factionName);");
-    $sql->bindParam(":username", $this->getName());
+    $sql = (new SQLite3Provider())->getDatabase()->prepare("REPLACE INTO players(factionName) VALUES (:factionName) WHERE username = '$this->getName()';");
     $sql->bindParam(":factionName", $faction->getName());
     $sql->execute();
   }
