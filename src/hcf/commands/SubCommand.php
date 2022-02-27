@@ -18,7 +18,7 @@ abstract class SubCommand
   /** @var Array **/
   protected $aliases;
   
-  public function __construct(string $name, string $description, string $usage, array $aliases = []) 
+  public function __construct(string $name, string $description = "", string $usage = null, array $aliases = []) 
   {
     $this->name = $name;
     $this->description = $description;

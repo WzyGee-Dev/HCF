@@ -12,7 +12,7 @@ use hcf\commands\SubCommand;
 use hcf\Loader;
 use hcf\PlayerHCF;
 use hcf\manager\FactionManager;
-use hcf\trabslation\Translation;
+use hcf\translation\Translation;
 
 class CreateCommand extends SubCommand
 {
