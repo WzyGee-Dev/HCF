@@ -3,28 +3,29 @@
 namespace hcf\faction\command\subcommand;
 
 use pocketmine\command\{
-  Command,
   CommandSender
 };
 use pocketmine\Server;
+
+use hcf\commands\SubCommand;
 
 use hcf\Loader;
 use hcf\manager\FactionManager;
 use hcf\PlayerHCF;
 use hcf\translation\Translation;
 
-class AcceptCommand extends Command
+class AcceptCommand extends SubCommand
 {
   
   public function __construct()
   {
     parent::__construct("accept");
-    $this->setDescription("");
+    $this->setDescription("null");
     $this->setUsage("/f accept");
     $this->setAliases(["ac"]);
   }
   
-  public function execute(CommandSender $sender, string $label, array $args)
+  public function execute(CommandSender $sender, string $label, array $args): void
   {
     if (!$sender instanceof PlayerHCF) return;
     $factionName = $sender->getFactionName();

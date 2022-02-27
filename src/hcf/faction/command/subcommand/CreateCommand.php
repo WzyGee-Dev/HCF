@@ -3,17 +3,18 @@
 namespace hcf\faction\command\subcommand;
 
 use pocketmine\command\{
-  Command,
   CommandSender
 };
 use pocketmine\utils\TextFormat;
+
+use hcf\commands\SubCommand;
 
 use hcf\Loader;
 use hcf\PlayerHCF;
 use hcf\manager\FactionManager;
 use hcf\trabslation\Translation;
 
-class CreateCommand extends Command
+class CreateCommand extends SubCommand
 {
   
   public function __construct()

@@ -4,22 +4,25 @@ namespace hcf\commands;
 
 use pocketmine\command\CommandSender;
 
-class SubCommand 
+abstract class SubCommand 
 {
   
   /** @var String **/
   protected $name;
   
   /** @var String **/
-  protected $description;
+  protected $description = "";
+  
+  protected $usageMessage;
   
   /** @var Array **/
   protected $aliases;
   
-  public function __construct(string $name, string $description = "", array $aliases = []) 
+  public function __construct(string $name, string $description, string $usage, array $aliases = []) 
   {
     $this->name = $name;
     $this->description = $description;
+    $this->usageMessage = $usage ?? ("/" . $name);
     $this->aliases = $aliases;
   }
   
@@ -28,9 +31,19 @@ class SubCommand
     return $this->name ?? null;
   }
   
+  public function getUsage(): string
+  {
+    return $this->usageMessage;
+  }
+  
   public function setDescription(string $desc): void
   {
     $this->description = $desc;
+  }
+  
+  public function setUsage(string $usage): void
+  {
+    $this->usageMessage = $usage;
   }
   
   public function setAliases(array $aliases): void

@@ -3,17 +3,18 @@
 namespace hcf\faction\command\subcommand;
 
 use pocketmine\command\{
-  Command,
   CommandSender
 };
 use pocketmine\Server;
+
+use hcf\commands\SubCommand;
 
 use hcf\Loader;
 use hcf\PlayerHCF;
 use hcf\manager\FactionManager;
 use hcf\translation\Translation;
 
-class InviteCommand extends Command
+class InviteCommand extends SubCommand
 {
   
   public function __construct()
@@ -21,7 +22,7 @@ class InviteCommand extends Command
     parent::__construct("invite");
     $this->setDescription();
     $this->setUsage("/faction invite <username>");
-    $this->setAliases(["i", "inv"]);
+    $this->setAliases(["i"]);
   }
   
   public function execute(CommandSender $sender, string $label, array $args)
