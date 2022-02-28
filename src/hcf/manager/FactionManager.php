@@ -25,17 +25,17 @@ class FactionManager
     return $this->factions;
   }
   
-  public function isFaction(string $name): void
+  public function isFaction(string $name): bool
   {
     $sqlite = new SQLite3Provider();
-    $result = var_dump($sqlite->getDatabase()->querySingle("SELECT factionName FROM players WHERE username = '$name';"));
-    /*if (isset($result)) {
+    $result = $sqlite->getDatabase()->query("SELECT factionName FROM players WHERE username = '$name';");
+    if (isset($result)) {
       return true;
     }
     if (empty($result)) {
       return false;
     }
-    return false;*/
+    return false;
   }
   
   public function getFaction(string $name): Faction
