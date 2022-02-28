@@ -32,7 +32,7 @@ class SQLite3Provider
   $this->connection->close();
   }
   
-  public function getDatabase()
+  public function getDatabase(): ?SQLite3
   {
   return $this->connection ?? null;
   }

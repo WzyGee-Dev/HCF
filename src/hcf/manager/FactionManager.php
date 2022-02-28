@@ -27,8 +27,9 @@ class FactionManager
   
   public function isFaction(string $name): bool
   {
-    $sqlite = new SQLite3Provider();
-    $result = $sqlite->getDatabase()->querySingle("SELECT factionName FROM players WHERE username = '$name';");
+    $provider = new SQLite3Provider();
+    $sqlite = $proivder->getDatabase();
+    $result = $sqlite->querySingle("SELECT factionName FROM players WHERE username = '$name';");
     if (isset($result)) {
       return true;
     }
