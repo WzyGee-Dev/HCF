@@ -34,7 +34,7 @@ use hcf\manager\CommandsManager;
 
 class Loader extends PluginBase {
    
-   public const PLUGIN_VERSION = "1.7.0";
+   public const PLUGIN_VERSION = "1.7.5";
    
    public static Loader $instance;
    

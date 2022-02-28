@@ -37,7 +37,7 @@ class PlayerHCF extends Player
   
   public function setEnderPearlTime(int $time): void
   {
-    return $this->enderPearlTime = $time;
+    $this->enderPearlTime = $time;
   }
   
   /*public function setGoldebAppleTime(int $time): void

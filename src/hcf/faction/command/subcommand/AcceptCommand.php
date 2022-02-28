@@ -34,7 +34,7 @@ class AcceptCommand extends SubCommand
     if (!$sender->wasFactionInvite()) {
       return;
     }
-    if ($factionManager->isFaction($factionName)) {
+    if ($factionManager->isFaction($sender->getName())) {
       return;
     }
     //code.. if faction is full

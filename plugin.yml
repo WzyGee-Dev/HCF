@@ -1,5 +1,5 @@
 name: HCF
-version: 1.7.0
+version: 1.7.5
 main: hcf\Loader
 api: 4.0.0  #change in pm4
 authors: [iSrDxv,imDevi,vzSpell,zBxutii]

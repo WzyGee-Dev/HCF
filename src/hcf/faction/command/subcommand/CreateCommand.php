@@ -35,7 +35,7 @@ class CreateCommand extends SubCommand
     }
     $factionName = (string)$args[1];
     $factionManager = FactionManager::getInstance();
-    if ($factionManager->isFaction($factionName)) {
+    if ($factionManager->isFaction($sender->getName())) {
      // $sender->sendMessage();
       return;
     }
