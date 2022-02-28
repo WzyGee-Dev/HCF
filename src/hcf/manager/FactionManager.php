@@ -28,9 +28,9 @@ class FactionManager
   public function isFaction(string $name): bool
   {
     $provider = new SQLite3Provider();
-    $result = $provider->getDatabase()->querySingle("SELECT * FROM players WHERE username = '$name';");
+    $result = $provider->getDatabase()->querySingle("SELECT * FROM players WHERE username = '$name';", true);
     if (($result) !== null) {
-    return empty($result) ? false : true;
+    return empty($result["factionName"]) ? false : true;
     }
   }
   
