@@ -23,8 +23,8 @@ class DataLoad extends AsyncTask
     $sqlite = $provider->getDatabase();
     $players = $sqlite->prepare("INSERT INTO players(username, factionName, factionRank) VALUES (:username, :factionName, :factionRank);");
     $players->bindParam(":username", $this->player->getName());
-    $players->bindParam(":factionName", null);
-    $players->bindParam(":factionRank", null);
+    $players->bindParam(":factionName", "");
+    $players->bindParam(":factionRank", "");
     $players->execute();
   }
   
