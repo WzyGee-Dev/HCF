@@ -30,7 +30,13 @@ class FactionManager
     $sqlite = new SQLite3Provider();
     $result = $sqlite->getDatabase()->querySingle("SELECT factionName FROM players WHERE username = '$name';");
     var_dump($result);
-    return (empty($result)) ? false : true;
+    if (isset($result)) {
+      return true;
+    }
+    if (empty($result)) {
+      return false;
+    }
+    return false;
   }
   
   public function getFaction(string $name): Faction
