@@ -19,6 +19,7 @@ class YAMLProvider {
     if (!is_dir(Loader::getInstance()->getDataFolder() . "players" . DIRECTORY_SEPARATOR)) {
       @mkdir(Loader::getInstance()->getDataFolder() . "players" . DIRECTORY_SEPARATOR);
     }
+    Loader::getInstance()->saveResource("backups/kits_menu.yml");
     Loader::getInstance()->saveResource("listcrates.yml");
     Loader::getInstance()->saveResource("listitems.yml");
     Loader::getInstance()->saveResource("messages.yml");

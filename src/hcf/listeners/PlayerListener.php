@@ -31,19 +31,19 @@ class PlayerListener implements Listener
   {
     $player = $event->getPlayer();
     if (!$player instanceof PlayerHCF) return;
+    if (!$player->hasPlayedBefore()) {
+    Loader::getInstance()->getServer()->getAsyncPool()->submitTask(new DataLoad($player));
+    }
     $event->setJoinMessage(TextFormat::colorize(Translation::addMessage("message-welcome", ["name" => $player->getName()])));
     //$scoreboard = Scoreboard::create($player, TextFormat::colorize(Loader::getInstance()->getConfig()->get("server-name") . "&r | " . Loader::getInstance()->getConfig()->get("server-color") . "Map: #" . Loader::getInstance()->getConfig()->get("server-map")));
     //Loader::getInstance()->getScheduler()->scheduleRepeatingTask(new ScoreboardTask($scoreboard), 30);
  }
   
-  public function preLogin(PlayerLoginEvent $event): void
+  /**public function preLogin(PlayerLoginEvent $event): void
   {
     $player = $event->getPlayer();
     if (!$player instanceof PlayerHCF) return;
-    if (!$player->hasPlayedBefore()) {
-    Loader::getInstance()->getServer()->getAsyncPool()->submitTask(new DataLoad($player));
-    }
-  }
+  }**/
   
   public function quitEvent(PlayerQuitEvent $event): void
   {

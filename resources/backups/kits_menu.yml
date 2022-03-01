@@ -1,0 +1,6 @@
+# Name from GUI
+name: "GKitUI"
+# 0: Chest Normal 1: Chest Double
+size: 0
+# Chest items, that is, the items that will be there when you open the GUI
+items: ["Test"]
